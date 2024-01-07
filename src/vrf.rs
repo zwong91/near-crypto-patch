@@ -123,8 +123,6 @@ mod tests {
     use super::*;
 
     use secp256k1::rand::rngs::OsRng;
-    use serde::{Deserialize, Serialize};
-    use serde_json::{from_str, to_string};
 
     fn random_secret_key() -> SecretKey {
         SecretKey::from_scalar(Scalar::random(&mut OsRng))
@@ -137,5 +135,6 @@ mod tests {
         assert_eq!(sk, sk2);
         let pk = sk.public_key();
         let pk2 = sk2.public_key();
+        assert_eq!(pk, pk2);
     }
 }
